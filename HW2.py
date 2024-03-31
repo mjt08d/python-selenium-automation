@@ -1,5 +1,3 @@
-#Part 1
-
 #Amazon logo
 driver.find_element(By.XPATH, "//i[@class='a-icon a-icon-logo']")
 
