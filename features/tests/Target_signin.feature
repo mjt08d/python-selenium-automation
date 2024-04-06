@@ -6,3 +6,4 @@ Feature: Sign in verification
     Given Open Target homepage
     When Click the "Sign in" button on upper right of homepage and click the "Sign in" button on drop down menu
     Then Verify "Sign in" page opens
+
