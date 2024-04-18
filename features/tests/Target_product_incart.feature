@@ -1,5 +1,5 @@
 # Created by michaeltrisotto at 4/8/24
-Feature: Verify item was added to cart
+Feature: Item was added to cart
 
 
   Scenario: Verify cups were added to cart

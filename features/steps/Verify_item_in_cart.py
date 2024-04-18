@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from behave import when, then
 from time import sleep
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 SEARCH_WORD = "cups"
@@ -22,19 +24,20 @@ def click_on_search_field(context):
 @when('Click Add to cart button')
 def click_on_add_to_cart(context):
     context.driver.find_element(*ADD_ITEM).click()
-    sleep(10)
+    wait = WebDriverWait(context.driver, 10)
+    wait.until(EC.element_to_be_clickable(ADD_TO_CART))
 
 
 @when('Click on "Add to cart" button from "Choose options" drop down')
 def click_on_add_to_cart_dropdown(context):
     context.driver.find_element(*ADD_TO_CART).click()
-    sleep(10)
+    wait = WebDriverWait(context.driver, 5)
+    wait.until(EC.element_to_be_clickable(VIEW_CHECKOUT))
 
 
 @when('Click on "View cart & check out" button on dropdown menu')
 def click_on_view_cart_and_check_out(context):
     context.driver.find_element(*VIEW_CHECKOUT).click()
-    sleep(10)
 
 
 @then('Verify cups are in the cart')
