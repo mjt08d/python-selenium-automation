@@ -11,14 +11,15 @@ CLICK_SEARCH = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
 ADD_ITEM = (By.CSS_SELECTOR, "#addToCartButtonOrTextIdFor82242697")
 ADD_TO_CART = (By.CSS_SELECTOR, "[aria-label*='Add to cart for Ball Aluminum']")
 VIEW_CHECKOUT = (By.CSS_SELECTOR, "[href='/cart']")
-VERIFY_CART = (By.CSS_SELECTOR, "span[class*='styles__CartSummarySpan']")
+VERIFY_CART = (By.XPATH, "//a[contains(@href, 'ball-aluminum-cup-recyclable-party-cups') and @data-test='cartItem-linked-title']")
 
 
 @when('Click on the "Search" field and type in cups')
 def click_on_search_field(context):
-    context.driver.find_element(*SEARCH_CUPS).send_keys(SEARCH_WORD)
-    context.driver.find_element(*CLICK_SEARCH).click()
-    sleep(10)
+    # context.driver.find_element(*SEARCH_CUPS).send_keys(SEARCH_WORD)
+    # context.driver.find_element(*CLICK_SEARCH).click()
+    # sleep(10)
+    context.app.header.search_product()
 
 
 @when('Click Add to cart button')
@@ -40,7 +41,12 @@ def click_on_view_cart_and_check_out(context):
     context.driver.find_element(*VIEW_CHECKOUT).click()
 
 
-@then('Verify cups are in the cart')
-def verify_cups_are_the_cart(context):
-    context.driver.find_element(*VERIFY_CART)
+@then('Verify search results are shown for {expected_item}')
+def verify_search_results(context, expected_item):
+    # actual_text = context.driver.find_element(*VERIFY_CART).text
+    # assert expected_item in actual_text, f'Expected "{expected_item} in the cart" but got "{actual_text}"'
+    context.app.search_results_page.verify_search_results(expected_item)
+
+
+
 

@@ -10,17 +10,19 @@ CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartIcon']")
 
 @given('Open Target homepage')
 def open_target(context):
-    context.driver.get('https://www.target.com/')
+    # context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main()
 
 
 @when('Click the "Sign in" button on upper right of homepage and click the "Sign in" button on drop down menu')
 def click_signin(context):
     context.driver.find_element(*SIGNIN_HOMEPAGE).click()
     context.driver.find_element(*DROPDOWN_SIGNIN).click()
-    sleep(3)
+    sleep(10)
+
 
 
 @when('Click on "Cart" icon')
 def click_on_icon(context):
     context.driver.find_element(*CART_ICON).click()
-    sleep(3)
+    sleep(10)

@@ -8,4 +8,4 @@ Feature: Item was added to cart
     And Click Add to cart button
     And Click on "Add to cart" button from "Choose options" drop down
     And Click on "View cart & check out" button on dropdown menu
-    Then Verify cups are in the cart
+    Then Verify search results are shown for Cups
